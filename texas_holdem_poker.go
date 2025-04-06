@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	NoPair        int8 = 1  // 高牌
+	HighCard      int8 = 1  // 高牌
 	OnePair       int8 = 2  // 对子
 	TwoPair       int8 = 3  // 两对
 	ThreeOfAKind  int8 = 4  // 三条
@@ -505,7 +505,7 @@ func (b *BoradCards) getValue(v int8) (value int8) {
 		}
 		return
 	default:
-		value = NoPair // 高牌
+		value = HighCard // 高牌
 		if b.isFlush() {
 			value = Flush
 			if b.isRoyalStraight() {
@@ -848,7 +848,7 @@ func (b *BoradCards) compareOnePair(a *BoradCards) int8 {
 // result will be 0 if a == b, -1 if a < b, and +1 if a > b.
 func (b *BoradCards) compare(a *BoradCards, v int8) int8 {
 	switch v {
-	case NoPair: // 高牌
+	case HighCard: // 高牌
 		return b.compareValue(a)
 	case RoyalFlush: // 皇家同花顺
 		return 1 // 不可能同时存在两个(即使是多人手牌)
